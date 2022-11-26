@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
@@ -19,11 +19,22 @@ export class MailingService {
     message: string
   ) {
     console.log('sending email');
-    const emailSub = this.http.post(this.backendUrl, {
-      name: name,
-      email: email,
-      message: message
-    }).subscribe({
+    const headers = new HttpHeaders()
+    .append('Content-Type', 'application/json')
+    .append('Access-Control-Allow-Headers', 'Content-Type')
+    .append('Access-Control-Allow-Origin', '*');
+    
+    const emailSub = this.http.post(
+      this.backendUrl, 
+      {
+        name: name,
+        email: email,
+        message: message
+      }, 
+      {
+        headers
+      }
+    ).subscribe({
       next: res => {
         this.emailSuccess.emit();
       },
