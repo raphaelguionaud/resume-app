@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import { SubSink } from 'subsink';
 import { MailingService } from '../services/mailing.service';
 
 
@@ -11,13 +13,14 @@ import { MailingService } from '../services/mailing.service';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+  subs = new SubSink();
   formGroup: FormGroup;
   token: string | undefined;
 
   constructor(
     private fb: FormBuilder,
     private mailing: MailingService,
-    private http: HttpClient
+    private snackbar: MatSnackBar
   ) {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
@@ -28,7 +31,19 @@ export class ContactComponent implements OnInit {
     this.token = undefined;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subs.sink = this.mailing.emailSuccess.subscribe(() => {
+      this.openSnackBar('Email sent successfully!');
+    });
+
+    this.subs.sink = this.mailing.emailFailure.subscribe(() => {
+      this.openSnackBar('Error sending email');
+    });
+  }
+
+  openSnackBar(message: string) {
+    this.snackbar.open(message, 'OK');
+  }
 
   resolved(captchaResponse: string) {
     this.formGroup.patchValue({
@@ -50,5 +65,9 @@ export class ContactComponent implements OnInit {
         values.message,
       );
     }
+  }
+
+  ngOnDestroy() {
+
   }
 }

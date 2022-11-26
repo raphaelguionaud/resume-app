@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MailingService {
+  backendUrl = 'https://resume-backend-rg.herokuapp.com/sendmail';
+  emailSuccess = new EventEmitter();
+  emailFailure = new EventEmitter();
 
   constructor(
     private http: HttpClient
@@ -16,12 +19,18 @@ export class MailingService {
     message: string
   ) {
     console.log('sending email');
-    // const emailSub = this.http.post('http://localhost:3000/sendmail', {
-    //   name: name,
-    //   email: email,
-    //   message: message
-    // }).subscribe(res => {
-    //   console.log('res -', res);
-    // });
+    const emailSub = this.http.post(this.backendUrl, {
+      name: name,
+      email: email,
+      message: message
+    }).subscribe({
+      next: res => {
+        this.emailSuccess.emit();
+      },
+      error: err => {
+        this.emailFailure.emit();
+      }
+    });
+
   }
 }

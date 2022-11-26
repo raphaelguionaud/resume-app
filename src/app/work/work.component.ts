@@ -25,8 +25,8 @@ export class WorkComponent implements OnInit {
     {
       name: 'microservices-app',
       description: 'A backend with microservice architecture for a social media app',
-      typeTags: ['backend', 'microservice'],
-      languageTags: ['Javascript', 'Typescript'],
+      typeTags: ['backend', 'microservices'],
+      languageTags: ['Javascript'],
       toolTags: ['node', 'express'],
       link: 'https://github.com/raphaelguionaud/microservices-app'
     },
