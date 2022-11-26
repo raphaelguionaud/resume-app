@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="column">
+        <form [formGroup]="formGroup">
+            <div class="flex">
+                <input type="text" placeholder="Name" name="name" formControlName="name">
+                <input type="text" placeholder="Email" email name="email" formControlName="email">
+            </div>
+            <textarea placeholder="Message" name="message" formControlName="message"></textarea>
+        </form>
+        
+        <form #form="ngForm">
+            <re-captcha id="recaptcha" name="recaptcha" 
+            #recaptcha="ngModel" [(ngModel)]="token" required 
+            [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"
+            (resolved)="resolved($event)"></re-captcha>
+            <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+                <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+            </div>
+            <button class="send" (click)="sendEmail()"
+            [disabled]="!formGroup.dirty || formGroup.invalid"
+            [ngStyle]="{
+                'background-color': (!formGroup.dirty || formGroup.invalid) ? 'rgb(101, 136, 202)' : 'rgb(31, 94, 211)',
+                'cursor': (!formGroup.dirty || formGroup.invalid) ? 'default' : 'pointer'
+            }"
+            >Send</button>
+        </form>
+    </div>
+</div>

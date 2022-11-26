@@ -1,0 +1,26 @@
+<div class="work-content">
+    <div class="top-bar">
+        <input type="text" name="search" placeholder="Search" class="search-input" 
+        [formControl]="searchCtrl">
+    </div>
+
+    <div class="project-list" *ngIf="filteredList.length > 0">
+        <div class="project-card" *ngFor="let project of filteredList">
+            <div class="project-name">
+                <a href="{{project.link}}" class="name">{{project.name}}</a>
+                <div class="tags">
+                    <div class="tag" *ngFor="let tag of project.typeTags">{{tag}}</div>
+                </div>
+            </div>
+            <div class="project-description">{{project.description}}</div>
+            <div class="project-languages">
+                <div class="language" *ngFor="let lang of project.languageTags">
+                    <div class="language-circle-js" *ngIf="lang === 'Javascript'"></div>
+                    <div class="language-circle-ts" *ngIf="lang === 'Typescript'"></div>
+                    <div class="language-circle-cpp" *ngIf="lang === 'C++'"></div>
+                    <div class="language-name">{{lang}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
