@@ -54,26 +54,30 @@
                     color: rgb(31, 94, 211);
                     margin-right: 12px;
                 }
-
-                .tags {
-                    display: flex;
-
-                    .tag {
-                        border: 1px solid #29333d;
-                        padding: 4px 8px;
-                        border-radius: 12px;
-                        margin-right: 8px;
-                        font-size: 12px;
-                    }
+            }
+            
+            .project-tags {
+                display: flex;
+                align-items: center;
+                text-overflow: ellipsis;
+    
+                .tag {
+                    border: 1px solid #29333d;
+                    padding: 4px 8px;
+                    border-radius: 12px;
+                    margin-right: 8px;
+                    font-size: 12px;
                 }
             }
 
             .project-description {
                 font-size: 14px;
+                text-overflow: ellipsis;
             }
 
             .project-languages {
                 display: flex;
+                text-overflow: ellipsis;
 
                 .language {
                     display: flex;
