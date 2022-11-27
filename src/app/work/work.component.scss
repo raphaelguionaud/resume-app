@@ -60,6 +60,8 @@
                 display: flex;
                 align-items: center;
                 text-overflow: ellipsis;
+                width: 100%;
+                margin-bottom: 4px;
     
                 .tag {
                     border: 1px solid #29333d;
@@ -73,11 +75,13 @@
             .project-description {
                 font-size: 14px;
                 text-overflow: ellipsis;
+                width: 100%;
             }
 
             .project-languages {
                 display: flex;
                 text-overflow: ellipsis;
+                width: 100%;
 
                 .language {
                     display: flex;
