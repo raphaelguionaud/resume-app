@@ -24,7 +24,7 @@ export class WorkComponent implements OnInit {
   projectList: Project[] = [
     {
       name: 'microservices-app',
-      description: 'A backend with microservice architecture for a social media app, made with NodeJS & Express',
+      description: 'A backend with microservice architecture for a social media app, made with NodeJS, Express, React, Docker and Kubernetes',
       typeTags: ['backend', 'microservices'],
       languageTags: ['Javascript'],
       toolTags: ['NodeJS', 'ExpressJS', 'React', 'Docker', 'Kubernetes'],
