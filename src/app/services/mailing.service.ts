@@ -36,7 +36,11 @@ export class MailingService {
       }
     ).subscribe({
       next: res => {
-        this.emailSuccess.emit();
+        if(res?.message === 'ok') {
+          this.emailSuccess.emit();
+        } else {
+          this.emailFailure.emit();
+        }
       },
       error: err => {
         this.emailFailure.emit();
