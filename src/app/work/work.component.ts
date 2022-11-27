@@ -36,7 +36,7 @@ export class WorkComponent implements OnInit {
       typeTags: ['frontend', 'backend'],
       languageTags: ['Javascript', 'Typescript'],
       toolTags: ['NodeJS', 'ExpressJS', 'Angular'],
-      link: 'https://github.com/raphaelguionaud/microservices-app'
+      link: 'https://github.com/raphaelguionaud/resume-app'
     }
   ];
 
