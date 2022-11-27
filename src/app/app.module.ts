@@ -17,7 +17,6 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
-import { IntroComponent } from './intro/intro.component';
 
 const modules = [
   BrowserModule,
@@ -42,7 +41,6 @@ const modules = [
     WorkComponent,
     AboutComponent,
     ContactComponent,
-    IntroComponent
   ],
   imports: [ ...modules ],
   providers: [

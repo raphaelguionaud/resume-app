@@ -68,6 +68,6 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnDestroy() {
-
+    this.subs.unsubscribe();
   }
 }

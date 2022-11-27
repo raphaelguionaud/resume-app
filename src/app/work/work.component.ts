@@ -27,25 +27,22 @@ export class WorkComponent implements OnInit {
       description: 'A backend with microservice architecture for a social media app, made with NodeJS & Express',
       typeTags: ['backend', 'microservices'],
       languageTags: ['Javascript'],
-      toolTags: ['node', 'express'],
+      toolTags: ['NodeJS', 'ExpressJS', 'React', 'Docker', 'Kubernetes'],
       link: 'https://github.com/raphaelguionaud/microservices-app'
     },
-    // {
-    //   name: 'microservices-app',
-    //   description: 'A backend with microservice architecture for a social media app',
-    //   typeTags: ['backend', 'microservice'],
-    //   languageTags: ['Javascript', 'Typescript'],
-    //   toolTags: ['node', 'express'],
-    //   link: 'https://github.com/raphaelguionaud/microservices-app'
-    // }
+    {
+      name: 'resume-app',
+      description: 'A resume app built with Angular & NodeJS hosted on Heroku',
+      typeTags: ['frontend', 'backend'],
+      languageTags: ['Javascript', 'Typescript'],
+      toolTags: ['NodeJS', 'ExpressJS', 'Angular'],
+      link: 'https://github.com/raphaelguionaud/microservices-app'
+    }
   ];
 
   searchCtrl = new UntypedFormControl;
   languageCtrl = new FormControl('');
   languageList: string[] = [];
-
-  toppings = new FormControl('');
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   constructor() {}
 
