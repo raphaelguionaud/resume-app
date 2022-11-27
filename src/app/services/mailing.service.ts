@@ -35,7 +35,7 @@ export class MailingService {
         headers
       }
     ).subscribe({
-      next: res => {
+      next: (res: any) => {
         if(res?.message === 'ok') {
           this.emailSuccess.emit();
         } else {
